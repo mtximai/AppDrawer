@@ -4,30 +4,33 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.example.appdrawer.R
+import kotlinx.android.synthetic.main.fragment_gallery.*
 
 class GalleryFragment : Fragment() {
 
     private lateinit var galleryViewModel: GalleryViewModel
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
-        galleryViewModel = ViewModelProviders.of(this).get(GalleryViewModel::class.java)
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_gallery, container, false)
+    }
 
-        val root = inflater.inflate(R.layout.fragment_gallery, container, false)
-        val textView: TextView = root.findViewById(R.id.text_gallery)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        //galleryViewModel = ViewModelProvider(this).get(GalleryViewModel::class.java)
+        galleryViewModel = ViewModelProvider.NewInstanceFactory().create(GalleryViewModel::class.java)
 
         galleryViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+            text_gallery.text = it
         })
-
-        return root
     }
+
 }

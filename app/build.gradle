@@ -36,7 +36,7 @@ android {
 }
 
 ext {
-    retrofitversion="2.6.0"
+    retrofitversion = "2.6.0"
 }
 
 dependencies {
@@ -55,6 +55,7 @@ dependencies {
 
     implementation "com.squareup.retrofit2:retrofit:$retrofitversion"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofitversion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitversion"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

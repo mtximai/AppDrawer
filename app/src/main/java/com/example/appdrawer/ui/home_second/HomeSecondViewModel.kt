@@ -1,4 +1,4 @@
-package com.example.appdrawer.ui.home
+package com.example.appdrawer.ui.home_second
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

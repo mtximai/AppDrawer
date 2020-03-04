@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#673AB7"
-    tools:context=".ui.home.HomeSecondFragment">
+    tools:context=".ui.home_second.HomeSecondFragment">
 
     <TextView
         android:id="@+id/text_home_second"
@@ -20,5 +20,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Go to home first"
+        app:layout_constraintEnd_toEndOf="@+id/text_home_second"
+        app:layout_constraintStart_toStartOf="@+id/text_home_second"
+        app:layout_constraintTop_toBottomOf="@+id/text_home_second" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
