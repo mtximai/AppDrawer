@@ -15,7 +15,8 @@ class GalleryFragment : Fragment() {
     private lateinit var galleryViewModel: GalleryViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
