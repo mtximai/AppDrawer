@@ -9,7 +9,7 @@
     <!-- TODO: Update blank fragment layout -->
 
     <ListView
-        android:id="@+id/recipe_list_view"
+        android:id="@+id/recipe_listview"
         android:layout_width="0dp"
         android:layout_height="500dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +24,7 @@
         android:text="Resultado da Pesquisa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recipe_list_view" />
+        app:layout_constraintTop_toBottomOf="@+id/recipe_listview" />
 
     <Button
         android:id="@+id/buttonPesquisar"

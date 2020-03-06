@@ -1,20 +1,23 @@
 package com.example.appdrawer.ui.test1
 
+import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
+import android.widget.BaseAdapter
 import android.widget.ListView
+import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.example.appdrawer.R
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.synthetic.main.fragment_test1.*
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
-import retrofit2.http.Query
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -36,11 +39,6 @@ class Test1Fragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        var array = arrayOf("Melbourne", "Vienna", "Vancouver", "Toronto", "Calgary", "Adelaide", "Perth", "Auckland", "Helsinki", "Hamburg", "Munich", "New York", "Sydney", "Paris", "Cape Town", "Barcelona", "London", "Bangkok")
-
-        val adapter = ArrayAdapter(this, R.layout.listview_item, array)
-
 
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
@@ -79,20 +77,60 @@ class Test1Fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        listView = getView()!!.findViewById(R.id.recipe_list_view)
+        listView = view.findViewById(R.id.recipe_listview)
+        //listView = getView()!!.findViewById(R.id.recipe_listview) ?:
 
-        val listItems = arrayOfNulls<String>(2)
-        listItems[0] = "linha um"
-        listItems[1] = "linha dois"
+        //val redcolor = Color.parseColor("#ff0000")
+        //listView.setBackgroundColor(R.color.colorPrimary)
+        //listView.setBackgroundColor(redcolor)
 
-        //listView.adapter = adapter
+        //Toast.makeText(view.context, "My message", Toast.LENGTH_SHORT).show()
 
+        listView.adapter = MyCustomAdapter(view.context)
 
         buttonPesquisar.setOnClickListener(View.OnClickListener {
             getData()
         })
 
     }
+
+    // 05/03/20
+    private class MyCustomAdapter(context: Context) : BaseAdapter() {
+        private val mContext: Context = context
+        private val names = arrayListOf<String>("Huguinho", "Zezinho", "Luizinho")
+
+        override fun getCount(): Int {
+            return names.size
+        }
+
+        override fun getItemId(position: Int): Long {
+            return position.toLong()
+        }
+
+        override fun getItem(position: Int): Any {
+            return "Test string"
+        }
+
+        override fun getView(position: Int, convertView: View?, viewGroup: ViewGroup?): View {
+            /*
+            val textView = TextView(mContext)
+            textView.text = "dados do item"
+            return textView
+             */
+
+            val layoutInflater = LayoutInflater.from(mContext)
+            val itemView = layoutInflater.inflate(R.layout.listview_item, viewGroup, false)
+
+            val codigoTextView = itemView.findViewById<TextView>(R.id.textCodigo)
+            codigoTextView.text = "row number: $position"
+
+            val descricaoTextView = itemView.findViewById<TextView>(R.id.textDescricao)
+            descricaoTextView.text = names.get(position)
+
+            return itemView
+        }
+    }
+
 
     fun getData() {
         val retrofitClient = getRetrofitInstance("https://mobile.tcm.sp.gov.br/")
