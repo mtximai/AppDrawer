@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.appdrawer.R
+import com.example.appdrawer.ui.test1.AreaViewModel
 import kotlinx.android.synthetic.main.fragment_gallery.*
 
 class GalleryFragment : Fragment() {
@@ -27,11 +28,13 @@ class GalleryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         //galleryViewModel = ViewModelProvider(this).get(GalleryViewModel::class.java)
+
         galleryViewModel = ViewModelProvider.NewInstanceFactory().create(GalleryViewModel::class.java)
 
         galleryViewModel.text.observe(viewLifecycleOwner, Observer {
             text_gallery.text = it
         })
+
     }
 
 }
