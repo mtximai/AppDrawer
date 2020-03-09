@@ -1,6 +1,8 @@
 package com.example.appdrawer
 
 import android.os.Bundle
+import android.util.Log
+import android.util.Log.d
 import android.view.Menu
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
@@ -57,5 +59,10 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("myLog", "onDestroy: from MainActivity")
     }
 }

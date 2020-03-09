@@ -1,5 +1,6 @@
 package com.example.appdrawer.ui.test1
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,28 +14,32 @@ class AreaViewModel : ViewModel() {
     val areas: LiveData<List<Area>> = _areas
 
     fun getAreas() {
-        // _areas.value = getFakeAreas()
-
         AtomoService.service.getAreas().enqueue(object : Callback<List<Area>> {
             override fun onResponse(call: Call<List<Area>>, response: Response<List<Area>>) {
+                var msg = response.errorBody().toString()
+
                 if (response.isSuccessful) {
                     _areas.value = response.body()
+                    Log.i("mylog","AreaViewModel > getAreas: sucesso")
+                }
+                else {
+                    Log.i("mylog","AreaViewModel > getAreas: $msg")
                 }
             }
 
             override fun onFailure(call: Call<List<Area>>, t: Throwable) {
-                //Toast.makeText(this, t.message, Toast.LENGTH_SHORT).show()
+                Log.d("mylog","AreaViewModel > onFailure(): erro ")
             }
 
         })
     }
 
-    private fun getFakeAreas() : List<Area> {
+    fun getFakeAreas() {
         var area1 : Area = Area("10", "Nova area 10")
         var area2 : Area = Area("20", "Nova area 20")
 
         var areaLst : List<Area> = listOf<Area>(area1, area2)
 
-        return areaLst
+        _areas.value = areaLst
     }
 }

@@ -3,6 +3,7 @@ package com.example.appdrawer.ui.test1
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.appdrawer.R
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.synthetic.main.fragment_area.*
+import kotlinx.android.synthetic.main.fragment_area.view.*
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -48,7 +50,8 @@ class AreaFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
@@ -78,8 +81,7 @@ class AreaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        listView = view.findViewById(R.id.recipe_listview)
-        //listView = getView()!!.findViewById(R.id.recipe_listview) ?:
+        listView = view.recipe_listview
 
         //val redcolor = Color.parseColor("#ff0000")
         //listView.setBackgroundColor(R.color.colorPrimary)
@@ -89,17 +91,33 @@ class AreaFragment : Fragment() {
 
         val viewModel: AreaViewModel = ViewModelProvider.NewInstanceFactory().create(AreaViewModel::class.java)
 
-        viewModel.areas.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                listView.adapter = MyAdapter(view.context, it)
+        viewModel.areas.observe(viewLifecycleOwner,
+            Observer {
+                it?.let {
+                    listView.adapter = MyAdapter(view.context, it)
+                }
             }
-        })
+        )
 
         viewModel.getAreas()
 
         buttonPesquisar.setOnClickListener(View.OnClickListener {
-
+            viewModel.getAreas()
         })
+
+        buttonPesquisarFake.setOnClickListener(View.OnClickListener {
+            viewModel.getFakeAreas()
+        })
+
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("myLog","onDestroy() from AreaFragment")
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        Log.d("myLog","onDestroyView() from AreaFragment")
+    }
 }

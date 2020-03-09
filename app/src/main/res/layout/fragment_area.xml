@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@+id/textResultado"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Resultado da Pesquisa"
@@ -31,10 +31,22 @@
         android:id="@+id/buttonPesquisar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="72dp"
         android:text="Pesquisar"
-        app:layout_constraintEnd_toEndOf="@+id/textResultado"
         app:layout_constraintStart_toStartOf="@+id/textResultado"
+        app:layout_constraintTop_toBottomOf="@+id/textResultado" />
+
+    <Button
+        android:id="@+id/buttonPesquisarFake"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="72dp"
+        android:text="Fake data"
+        app:layout_constraintEnd_toEndOf="@+id/textResultado"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toEndOf="@+id/buttonPesquisar"
         app:layout_constraintTop_toBottomOf="@+id/textResultado" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

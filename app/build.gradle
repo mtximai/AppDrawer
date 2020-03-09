@@ -33,6 +33,10 @@ android {
         jvmTarget = "1.8"
     }
 
+    // to replace findViewById with view binding
+//    buildFeatures {
+//        viewBinding = true
+//    }
 }
 
 ext {

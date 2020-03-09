@@ -42,7 +42,7 @@ class MyAdapter(context: Context,
 
         val codigoTextView = itemView.findViewById<TextView>(R.id.textCodigo)
         val codigo = areas[position].codigo
-        codigoTextView.text = "Código: $codigo"
+        codigoTextView.text = "Código: ${areas[position].codigo}"
 
         val descricaoTextView = itemView.findViewById<TextView>(R.id.textDescricao)
         descricaoTextView.text = areas[position].descricao
