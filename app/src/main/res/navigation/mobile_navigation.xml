@@ -49,4 +49,11 @@
         android:label="@string/menu_test1"
         tools:layout="@layout/fragment_area" />
 
+    <fragment
+        android:id="@+id/nav_test2"
+        android:name="com.example.appdrawer.ui.test2.Area2Fragment"
+        android:label="@string/menu_test2"
+        tools:layout="@layout/fragment_area2_list" />
+
+
 </navigation>

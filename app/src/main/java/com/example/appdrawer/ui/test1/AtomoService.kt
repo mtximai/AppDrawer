@@ -13,9 +13,9 @@ object AtomoService {
 
     val service : IAtomoService = getRetrofitInstance().create(IAtomoService::class.java)
 
-//    fun getAreaCall(): Call<List<Area>> {
-//        return service.getAreas()
-//    }
+    //    fun getAreaCall(): Call<List<Area>> {
+    //        return service.getAreas()
+    //    }
 
     private fun getRetrofitInstance() : Retrofit {
         val okHttpClient = OkHttpClient.Builder()
@@ -34,5 +34,13 @@ object AtomoService {
     interface IAtomoService {
         @GET("api/Corporativo/AreasAtivas")
         fun getAreas(): Call<List<Area>>
+
+        /**
+         * @GET declares an HTTP GET request
+         * @Path("user") annotation on the userId parameter marks it as a
+         * replacement for the {user} placeholder in the @GET path
+         */
+        //        @GET("/users/{user}")
+        //        fun getUser(@Path("user") userId: String): Call<User>
     }
 }
