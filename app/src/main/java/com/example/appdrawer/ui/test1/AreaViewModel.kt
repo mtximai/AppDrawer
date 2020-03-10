@@ -14,12 +14,15 @@ class AreaViewModel : ViewModel() {
     val areas: LiveData<List<Area>> = _areas
 
     fun getAreas() {
+        // enqueue() : chamada assíncrona / execute() : chamada síncrona
         AtomoService.service.getAreas().enqueue(object : Callback<List<Area>> {
             override fun onResponse(call: Call<List<Area>>, response: Response<List<Area>>) {
                 var msg = response.errorBody().toString()
 
                 if (response.isSuccessful) {
-                    _areas.value = response.body()
+                    response.body()?.let { resp ->
+                        _areas.value = resp
+                    }
                     Log.i("mylog","AreaViewModel > getAreas: sucesso")
                 }
                 else {
