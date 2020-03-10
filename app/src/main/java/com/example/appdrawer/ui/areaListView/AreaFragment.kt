@@ -1,26 +1,18 @@
-package com.example.appdrawer.ui.test1
+package com.example.appdrawer.ui.areaListView
 
-import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
 import android.widget.ListView
-import android.widget.TextView
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.appdrawer.R
-import com.google.gson.annotations.SerializedName
+import com.example.appdrawer.viewmodel.AreaViewModel
 import kotlinx.android.synthetic.main.fragment_area.*
 import kotlinx.android.synthetic.main.fragment_area.view.*
-import retrofit2.*
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.GET
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -89,12 +81,17 @@ class AreaFragment : Fragment() {
 
         //Toast.makeText(view.context, "My message", Toast.LENGTH_SHORT).show()
 
-        val viewModel: AreaViewModel = ViewModelProvider.NewInstanceFactory().create(AreaViewModel::class.java)
+        val viewModel: AreaViewModel = ViewModelProvider.NewInstanceFactory().create(
+            AreaViewModel::class.java)
 
         viewModel.areas.observe(viewLifecycleOwner,
             Observer {
                 it?.let {
-                    listView.adapter = MyAdapter(view.context, it)
+                    listView.adapter =
+                        AreaAdapter(
+                            view.context,
+                            it
+                        )
                 }
             }
         )

@@ -1,5 +1,6 @@
-package com.example.appdrawer.ui.test1
+package com.example.appdrawer.repository
 
+import com.example.appdrawer.entity.Area
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -11,7 +12,8 @@ import java.util.concurrent.TimeUnit
 // Singleton class
 object AtomoService {
 
-    val service : IAtomoService = getRetrofitInstance().create(IAtomoService::class.java)
+    val service : IAtomoService = getRetrofitInstance()
+        .create(IAtomoService::class.java)
 
     //    fun getAreaCall(): Call<List<Area>> {
     //        return service.getAreas()

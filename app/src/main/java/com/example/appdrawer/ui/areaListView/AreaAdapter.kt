@@ -1,4 +1,4 @@
-package com.example.appdrawer.ui.test1
+package com.example.appdrawer.ui.areaListView
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -9,11 +9,13 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import android.widget.Toast
 import com.example.appdrawer.R
+import com.example.appdrawer.entity.Area
 
-// 05/03/20 - Adapter para ListView
-// todo: Remover dependência da Activity via passagem do Context
-class MyAdapter(context: Context,
-                private val areas: List<Area>) : BaseAdapter() {
+// Adapter para ListView - 05/03/20
+class AreaAdapter(
+    context: Context,
+    private val areas: List<Area>
+) : BaseAdapter() {
 
     private val mContext: Context = context
 
@@ -38,7 +40,7 @@ class MyAdapter(context: Context,
          */
 
         val layoutInflater = LayoutInflater.from(mContext)
-        val itemView = layoutInflater.inflate(R.layout.listview_item, viewGroup, false)
+        val itemView = layoutInflater.inflate(R.layout.area_item, viewGroup, false)
 
         val codigoTextView = itemView.findViewById<TextView>(R.id.textCodigo)
         val codigo = areas[position].codigo

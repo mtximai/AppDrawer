@@ -26,6 +26,6 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello test1 fragment</string>
+    <string name="hello_blank_fragment">Hello area recycle view fragment</string>
     <string name="menu_test2">Áreas (RecycleView)</string>
 </resources>

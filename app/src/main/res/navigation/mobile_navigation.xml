@@ -45,15 +45,20 @@
 
     <fragment
         android:id="@+id/nav_test1"
-        android:name="com.example.appdrawer.ui.test1.AreaFragment"
+        android:name="com.example.appdrawer.ui.areaListView.AreaFragment"
         android:label="@string/menu_test1"
         tools:layout="@layout/fragment_area" />
 
     <fragment
-        android:id="@+id/nav_test2"
-        android:name="com.example.appdrawer.ui.test2.Area2Fragment"
+        android:id="@+id/nav_area_recycle_view"
+        android:name="com.example.appdrawer.ui.areaRecyclerView.AreaRecyclerFragment"
         android:label="@string/menu_test2"
-        tools:layout="@layout/fragment_area2_list" />
+        tools:layout="@layout/fragment_area_recycle" />
 
+    <fragment
+        android:id="@+id/nav_area_recycle_view_detail"
+        android:name="com.example.appdrawer.ui.areaRecyclerView.AreaRecyclerDetailFragment"
+        android:label="@string/menu_test2"
+        tools:layout="@layout/fragment_area_recycler_detail" />
 
 </navigation>

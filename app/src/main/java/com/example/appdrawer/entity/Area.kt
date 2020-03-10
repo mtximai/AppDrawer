@@ -1,4 +1,4 @@
-package com.example.appdrawer.ui.test1
+package com.example.appdrawer.entity
 
 import com.google.gson.annotations.SerializedName
 

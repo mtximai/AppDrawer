@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.example.appdrawer.R
 
-
 import com.example.appdrawer.ui.test2.Area2Fragment.OnListFragmentInteractionListener
 import com.example.appdrawer.ui.test2.dummy.DummyContent.DummyItem
 

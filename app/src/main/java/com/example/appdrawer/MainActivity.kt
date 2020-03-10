@@ -15,6 +15,8 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.navigation.fragment.findNavController
+import com.example.appdrawer.ui.areaRecyclerView.AreaRecyclerDetailFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,15 +27,25 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
+        // Toolbar
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
+        // ActionButton
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener { view ->
+
+            val fragmentManager = supportFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            val fragment = AreaRecyclerDetailFragment.newInstance("1","11")
+            fragmentTransaction.add(R.id.nav_host_fragment, fragment)
+            fragmentTransaction.commit()
+
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
         }
 
+        // Navigation Drawer
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
 
         // Navigation bar configuration

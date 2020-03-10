@@ -1,9 +1,11 @@
-package com.example.appdrawer.ui.test1
+package com.example.appdrawer.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.appdrawer.entity.Area
+import com.example.appdrawer.repository.AtomoService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -38,8 +40,10 @@ class AreaViewModel : ViewModel() {
     }
 
     fun getFakeAreas() {
-        var area1 : Area = Area("10", "Nova area 10")
-        var area2 : Area = Area("20", "Nova area 20")
+        var area1 : Area =
+            Area("10", "Nova area 10")
+        var area2 : Area =
+            Area("20", "Nova area 20")
 
         var areaLst : List<Area> = listOf<Area>(area1, area2)
 
