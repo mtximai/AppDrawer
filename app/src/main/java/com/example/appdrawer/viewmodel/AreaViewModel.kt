@@ -11,10 +11,13 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class AreaViewModel : ViewModel() {
+
+    // PROPRIEDADES
     private val _areas = MutableLiveData<List<Area>>()
 
     val areas: LiveData<List<Area>> = _areas
 
+    // FUNÇÕES
     fun getAreas() {
         // enqueue() : chamada assíncrona / execute() : chamada síncrona
         AtomoService.service.getAreas().enqueue(object : Callback<List<Area>> {
@@ -25,27 +28,25 @@ class AreaViewModel : ViewModel() {
                     response.body()?.let { resp ->
                         _areas.value = resp
                     }
-                    Log.i("mylog","AreaViewModel > getAreas: sucesso")
-                }
-                else {
-                    Log.i("mylog","AreaViewModel > getAreas: $msg")
+                    Log.i("mylog", "AreaViewModel > onResponse: sucesso")
+                } else {
+                    Log.i("mylog", "AreaViewModel > onResponse: $msg")
                 }
             }
 
             override fun onFailure(call: Call<List<Area>>, t: Throwable) {
-                Log.d("mylog","AreaViewModel > onFailure(): erro ")
+                Log.d("mylog", "AreaViewModel > onFailure(): ${t.message}")
             }
-
         })
     }
 
     fun getFakeAreas() {
-        var area1 : Area =
+        var area1: Area =
             Area("10", "Nova area 10")
-        var area2 : Area =
+        var area2: Area =
             Area("20", "Nova area 20")
 
-        var areaLst : List<Area> = listOf<Area>(area1, area2)
+        var areaLst: List<Area> = listOf<Area>(area1, area2)
 
         _areas.value = areaLst
     }

@@ -20,7 +20,7 @@ class AreaRecyclerAdapter(
         return AreaViewHolder(view)
     }
 
-    // O layout dos itens devem ser atualizado aqui
+    // O layout dos itens deve ser atualizado aqui
     override fun onBindViewHolder(holder: AreaViewHolder, position: Int) {
         holder.bindView(areas[position])
     }

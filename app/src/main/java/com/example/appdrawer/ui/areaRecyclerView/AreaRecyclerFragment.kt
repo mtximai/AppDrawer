@@ -69,7 +69,6 @@ class AreaRecyclerFragment : Fragment() {
             Observer {
                 it?.let {
                     with(recyclerArea) {
-
                         //layoutManager = LinearLayoutManager(this@AreaRecycleFragment.context)
                         layoutManager = LinearLayoutManager(context)
 
