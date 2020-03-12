@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.appdrawer.R
 import com.example.appdrawer.viewmodel.AreaViewModel
-import kotlinx.android.synthetic.main.fragment_area_recycle.*
+import kotlinx.android.synthetic.main.fragment_area_recycler.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -42,7 +42,7 @@ class AreaRecyclerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_area_recycle, container, false)
+        val view = inflater.inflate(R.layout.fragment_area_recycler, container, false)
 
         // Set the adapter
 //        if (view is RecyclerView) {

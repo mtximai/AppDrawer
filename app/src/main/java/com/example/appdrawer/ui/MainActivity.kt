@@ -1,8 +1,7 @@
-package com.example.appdrawer
+package com.example.appdrawer.ui
 
 import android.os.Bundle
 import android.util.Log
-import android.util.Log.d
 import android.view.Menu
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
@@ -15,7 +14,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.navigation.fragment.findNavController
+import com.example.appdrawer.R
 import com.example.appdrawer.ui.areaRecyclerView.AreaRecyclerDetailFragment
 
 class MainActivity : AppCompatActivity() {
@@ -53,7 +52,11 @@ class MainActivity : AppCompatActivity() {
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        appBarConfiguration = AppBarConfiguration(setOf(R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow),
+        appBarConfiguration = AppBarConfiguration(setOf(
+            R.id.nav_home,
+            R.id.nav_gallery,
+            R.id.nav_slideshow
+        ),
                                                   drawerLayout)
 
         setupActionBarWithNavController(navController, appBarConfiguration)

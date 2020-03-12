@@ -43,13 +43,6 @@ object AtomoService {
         @GET("api/Corporativo/AreasAtivas")
         fun getAreas(): Call<List<Area>>
 
-        @FormUrlEncoded
-        @POST("login")
-        fun userLogin(
-            @Field("email") email: String,
-            @Field("password") password: String
-        ): Call<ResponseBody>
-
         /**
          * @GET declares an HTTP GET request
          * @Path("user") annotation on the userId parameter marks it as a

@@ -1,18 +1,23 @@
 package com.example.appdrawer.ui.home
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.appdrawer.R
+import com.example.appdrawer.ui.auth.AuthListener
 import kotlinx.android.synthetic.main.fragment_home.*
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), AuthListener {
 
     private lateinit var homeViewModel: HomeViewModel
 
@@ -33,9 +38,41 @@ class HomeFragment : Fragment() {
             text_home.text = it
         })
 
+        homeViewModel.authListener = this
+
         view.findViewById<Button>(R.id.button_first).setOnClickListener {
             findNavController().navigate(R.id.action_HomeFragment_to_HomeSecondFragment)
         }
+
+        buttonLogin.setOnClickListener({
+
+            Toast.makeText(view.context,"mylog", Toast.LENGTH_SHORT).show()
+
+            homeViewModel.email = "x@x.com"
+            homeViewModel.password = "123456"
+
+            homeViewModel.onLoginButtonClick(it)
+
+        })
     }
+
+
+    // Implementatação para AuthListener
+
+    override fun onStarted() {
+        Log.d("mylog", "onStarted ...")
+    }
+
+    override fun onSuccess(loginResponse: LiveData<String>) {
+        Toast.makeText(this.context, "sssss", Toast.LENGTH_SHORT)
+        Log.d("mylog", "sucesso ...........")
+        Log.d("mylog", loginResponse.value)
+    }
+
+    override fun onFailure(message: String) {
+        //Toast.makeText(this.context, message, Toast.LENGTH_SHORT)
+        Log.d("mylog", message)
+    }
+
 
 }
