@@ -1,5 +1,5 @@
 # AppDrawer
 Test using Android Studio and Kotlin
 
-- Example using ListView
+- Example using ListView and RecyclerView
 - Consuming Rest service with Retrofit and GSon
