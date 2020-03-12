@@ -89,6 +89,8 @@ class AreaRecyclerFragment : Fragment() {
         )
 
         viewModel.getAreas()
+
+        progress_bar.visibility = View.VISIBLE
     }
 
     companion object {

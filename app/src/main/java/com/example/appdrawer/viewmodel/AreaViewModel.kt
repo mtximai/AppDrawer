@@ -21,15 +21,15 @@ class AreaViewModel : ViewModel() {
     fun getAreas() {
         // enqueue() : chamada assíncrona / execute() : chamada síncrona
         AtomoService.service.getAreas().enqueue(object : Callback<List<Area>> {
-            override fun onResponse(call: Call<List<Area>>, response: Response<List<Area>>) {
-                var msg = response.errorBody().toString()
 
+            override fun onResponse(call: Call<List<Area>>, response: Response<List<Area>>) {
                 if (response.isSuccessful) {
                     response.body()?.let { resp ->
                         _areas.value = resp
                     }
                     Log.i("mylog", "AreaViewModel > onResponse: sucesso")
                 } else {
+                    var msg = response.errorBody().toString()
                     Log.i("mylog", "AreaViewModel > onResponse: $msg")
                 }
             }
