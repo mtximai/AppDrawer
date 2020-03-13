@@ -37,11 +37,11 @@ class HomeViewModel : ViewModel() {
         val loginResponse = UserRepository().userLogin(email!!, password!!)
 
 
-        loginResponse.observe(this,
-            Observer {
-                authListener?.onSuccess(loginResponse)
-            }
-        )
+//        loginResponse.observe(this,
+//            Observer {
+//                authListener?.onSuccess(loginResponse)
+//            }
+//        )
 
     }
 }

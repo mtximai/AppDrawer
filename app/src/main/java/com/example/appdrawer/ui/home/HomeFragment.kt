@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.appdrawer.R
 import com.example.appdrawer.ui.auth.AuthListener
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment(), AuthListener {
@@ -64,7 +65,10 @@ class HomeFragment : Fragment(), AuthListener {
     }
 
     override fun onSuccess(loginResponse: LiveData<String>) {
-        Toast.makeText(this.context, "sssss", Toast.LENGTH_SHORT)
+        //Toast.makeText(this.context, "sssss", Toast.LENGTH_SHORT)
+
+        //Snackbar.make(this.view?.context, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show()
+
         Log.d("mylog", "sucesso ...........")
         Log.d("mylog", loginResponse.value)
     }
