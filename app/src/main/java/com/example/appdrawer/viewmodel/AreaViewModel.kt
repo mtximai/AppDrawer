@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.appdrawer.entity.Area
-import com.example.appdrawer.repository.AtomoService
+import com.example.appdrawer.data.network.AtomoService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

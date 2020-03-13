@@ -1,6 +1,7 @@
 package com.example.appdrawer.ui.home
 
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
@@ -24,10 +25,14 @@ class HomeViewModel : ViewModel() {
 
     var authListener: AuthListener? = null
 
+
     fun onLoginButtonClick(view: View) {
+        // works!
+        //Toast.makeText(view.context, "HomeViewModel > onLoginButtonClick", Toast.LENGTH_SHORT).show();
 
         authListener?.onStarted()
 
+        // Apply validation rules
         if (email.isNullOrEmpty() || password.isNullOrEmpty()) {
             authListener?.onFailure("Invalid email or password")
             return
@@ -35,13 +40,6 @@ class HomeViewModel : ViewModel() {
 
         // todo: use DI to inject UserRepository
         val loginResponse = UserRepository().userLogin(email!!, password!!)
-
-
-//        loginResponse.observe(this,
-//            Observer {
-//                authListener?.onSuccess(loginResponse)
-//            }
-//        )
-
+        authListener?.onSuccess(loginResponse)
     }
 }

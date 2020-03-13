@@ -46,31 +46,34 @@ class HomeFragment : Fragment(), AuthListener {
         }
 
         buttonLogin.setOnClickListener({
+            //Toast.makeText(view.context,"mylog", Toast.LENGTH_SHORT).show()  // works
 
-            Toast.makeText(view.context,"mylog", Toast.LENGTH_SHORT).show()
-
-            homeViewModel.email = "x@x.com"
+            homeViewModel.email = "probelalkhan@gmail.com"
             homeViewModel.password = "123456"
 
-            homeViewModel.onLoginButtonClick(it)
-
+            homeViewModel.onLoginButtonClick(view)
         })
     }
 
-
-    // Implementatação para AuthListener
+    // :::::::::::::::::::::::::::::::::::::::::::
+    // ::  Implementatação para AuthListener
+    // :::::::::::::::::::::::::::::::::::::::::::
 
     override fun onStarted() {
-        Log.d("mylog", "onStarted ...")
+        Log.d("mylog", "HomeFragment > onStarted")
     }
 
     override fun onSuccess(loginResponse: LiveData<String>) {
         //Toast.makeText(this.context, "sssss", Toast.LENGTH_SHORT)
-
         //Snackbar.make(this.view?.context, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show()
 
-        Log.d("mylog", "sucesso ...........")
-        Log.d("mylog", loginResponse.value)
+        Log.d("mylog", "HomeFragment > onSuccess ...")
+
+        loginResponse.observe( viewLifecycleOwner,
+            Observer {
+                Log.d("mylog", "HomeFragment > loginResponse.observe(): ${it} ")
+            }
+        )
     }
 
     override fun onFailure(message: String) {

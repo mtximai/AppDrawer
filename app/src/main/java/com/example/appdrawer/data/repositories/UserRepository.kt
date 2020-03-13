@@ -1,5 +1,6 @@
 package com.example.appdrawer.data.repositories
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.appdrawer.data.network.MyApi
@@ -25,10 +26,15 @@ class UserRepository {
                     call: Call<ResponseBody>,
                     response: Response<ResponseBody>
                 ) {
+
+                    var code = response.code().toString()
+                    Log.d("mylog", "onResponse code = ${response.code().toString()}")
+
                     if (response.isSuccessful) {
                         loginResponse.value = response.body()?.string()
                     } else {
-                        loginResponse.value = response.errorBody()?.string()
+                        Log.d("mylog", "onResponse.unSuccessful")
+                        loginResponse.value = "erro na chamada - code =  $code"
                     }
                 }
 

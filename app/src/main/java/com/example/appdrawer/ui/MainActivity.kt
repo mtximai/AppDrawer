@@ -32,16 +32,16 @@ class MainActivity : AppCompatActivity() {
 
         // ActionButton
         val fab: FloatingActionButton = findViewById(R.id.fab)
-        fab.setOnClickListener { view ->
 
+        fab.setOnClickListener { view ->
             val fragmentManager = supportFragmentManager
             val fragmentTransaction = fragmentManager.beginTransaction()
-            val fragment = AreaRecyclerDetailFragment.newInstance("1","11")
+            val fragment = AreaRecyclerDetailFragment.newInstance("1", "11")
             fragmentTransaction.add(R.id.nav_host_fragment, fragment)
             fragmentTransaction.commit()
 
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+                .setAction("Action", null).show()
         }
 
         // Navigation Drawer
@@ -52,12 +52,14 @@ class MainActivity : AppCompatActivity() {
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.nav_home,
-            R.id.nav_gallery,
-            R.id.nav_slideshow
-        ),
-                                                  drawerLayout)
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.nav_home,
+                R.id.nav_gallery,
+                R.id.nav_slideshow
+            ),
+            drawerLayout
+        )
 
         setupActionBarWithNavController(navController, appBarConfiguration)
 
@@ -78,6 +80,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d("myLog", "onDestroy: from MainActivity")
+        Log.d("mylog", "onDestroy: from MainActivity")
     }
 }
